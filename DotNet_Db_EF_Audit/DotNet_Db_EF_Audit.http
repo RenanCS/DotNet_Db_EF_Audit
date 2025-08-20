@@ -1,0 +1,6 @@
+@DotNet_Db_EF_Audit_HostAddress = http://localhost:5156
+
+GET {{DotNet_Db_EF_Audit_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
