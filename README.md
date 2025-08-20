@@ -59,15 +59,10 @@ Para criação das tabelas, será necessário, primeiramente, escolher o banco d
 Dentro de 'AuditTrailConfiguration' existe o mesmo trecho de código para cada banco de dados, entretanto, existem variações, conforme abaixo:
 
 ```
- builder.Property(e => e.ChangedColumns).HasColumnType("text");
- builder.Property(e => e.OldValues)
-     .HasConversion(v => JsonSerializer.Serialize(v, new JsonSerializerOptions()),
-                     v => JsonSerializer.Deserialize<Dictionary<string, object?>>(v, new JsonSerializerOptions()))
-     .HasColumnType("nvarchar(max)");
-builder.Property(e => e.NewValues)
-     .HasConversion(v => JsonSerializer.Serialize(v, new JsonSerializerOptions()),
-                    v => JsonSerializer.Deserialize<Dictionary<string, object?>>(v, new JsonSerializerOptions()))
-     .HasColumnType("nvarchar(max)");
+  // ------ TO POSTEGRES ----
+  builder.Property(e => e.ChangedColumns).HasColumnType("jsonb");
+  builder.Property(e => e.OldValues).HasColumnType("jsonb");
+  builder.Property(e => e.NewValues).HasColumnType("jsonb");
 ```
 
 Dentro de 'InfraModule' também existe o mesmo conceito de código para cada banco de dados.
