@@ -16,12 +16,12 @@ namespace DotNet_Db_EF_Audit.IoC.Module
             services.AddJwt(configuration);
 
             // ------ TO POSTEGRES ----
-            //services.AddPostgres(configuration);
+            services.AddPostgres(configuration);
 
             // ------ TO SQL SERVER ----
-            //services.AddSqlServer(configuration);
+            services.AddSqlServer(configuration);
 
-            // ------ TO SQL SERVER ----
+            // ------ TO SQL MYSQL ----
             services.AddMySql(configuration);
 
             return services;
